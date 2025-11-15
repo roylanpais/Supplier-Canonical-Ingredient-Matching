@@ -12,8 +12,8 @@ This project provides a complete solution for entity resolution, including a hig
 * Local Development Setup
 * API Endpoints
 * How to Use the Scripts
-* 1\. Running the Batch Pipeline
-* 2\. Evaluating Match Accuracy
+  1. Running the Batch Pipeline
+  2. Evaluating Match Accuracy
 * Running Tests
 * Configuration \& Maintenance
 * Design Rationale
@@ -134,7 +134,7 @@ This is the simplest, most reliable way to run the production application.
 
   ## **How to Use the Scripts**
 
-  These scripts are intended to be run from your local machine (after following the [Local Development Setup](https://www.google.com/search?q=%23local-development-setup)).
+  These scripts are intended to be run from your local machine (after following the Local Development Setup).
 
   ### **1. Running the Batch Pipeline**
 
