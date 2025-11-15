@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+pandas
+nltk
+fuzzywuzzy
+python-levenshtein
+scikit-learn
+tqdm
+pytest
+httpx
