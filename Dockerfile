@@ -1,17 +1,19 @@
-FROM python:3.11-slim
+FROM python:3.11-slim-bookworm
 WORKDIR /code
 
-COPY ./requirements.txt /code/requirements.txt
-RUN pip install --no-cache-dir --upgrade pip -r requirements.txt
-
-COPY ./app /code/app
-COPY ./data /code/data
+ENV PYTHONUNBUFFERED=1 \
+    ENVIRONMENT=production
+RUN groupadd --gid 1001 appuser && \
+    useradd --uid 1001 --gid 1001 --create-home appuser
 
 RUN python -m nltk.downloader stopwords wordnet punkt_tab
 
-EXPOSE 8000
-ENV ENVIRONMENT=production
+COPY ./requirements.txt /code/requirements.txt
+RUN pip install --no-cache-dir --upgrade pip -r /code/requirements.txt
 
-# The --host 0.0.0.0 makes the server accessible from outside the container
+COPY ./data /code/data
+COPY ./app /code/app
+USER appuser
+EXPOSE 8000
 
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
