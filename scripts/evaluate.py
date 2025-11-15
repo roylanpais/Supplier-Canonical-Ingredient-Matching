@@ -4,11 +4,7 @@ from pathlib import Path
 project_root = Path(__file__).resolve().parent.parent
 sys.path.append(str(project_root))
 
-try:
-    from app.config import OUTPUT_FILE, GROUND_TRUTH_FILE, MATCH_THRESHOLD
-except ImportError:
-    print("Error: Could not import from 'app'. Make sure the script is run from the project root.")
-    sys.exit(1)
+from app.config import OUTPUT_FILE, GROUND_TRUTH_FILE, MATCH_THRESHOLD
 
 def evaluate_matches():
     """
@@ -79,4 +75,5 @@ def evaluate_matches():
         print("\nAll matches correct!")
 
 if __name__ == "__main__":
+
     evaluate_matches()
