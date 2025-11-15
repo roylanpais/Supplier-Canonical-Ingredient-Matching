@@ -6,12 +6,8 @@ from pathlib import Path
 project_root = Path(__file__).resolve().parent.parent
 sys.path.append(str(project_root))
 
-try:
-    from app.matching import Matcher
-    from app.config import MASTER_FILE, SUPPLIER_FILE, OUTPUT_FILE, MATCH_THRESHOLD
-except ImportError:
-    print("Error: Could not import from 'app'. Make sure the script is run from the project root or the 'app' module is in your PYTHONPATH.")
-    sys.exit(1)
+from app.matching import Matcher
+from app.config import MASTER_FILE, SUPPLIER_FILE, OUTPUT_FILE, MATCH_THRESHOLD
 
 def run_batch_matching():
     """
@@ -63,4 +59,5 @@ def run_batch_matching():
     print("="*30)
 
 if __name__ == "__main__":
+
     run_batch_matching()
