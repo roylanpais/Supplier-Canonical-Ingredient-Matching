@@ -15,9 +15,9 @@ except LookupError:
     nltk.download('wordnet')
 
 try:
-    nltk.data.find('tokenizers/punkt')
+    nltk.data.find('tokenizers/punkt_tab')
 except LookupError:
-    nltk.download('punkt')
+    nltk.download('punkt_tab')
 
 SIZE_REGEX = re.compile(
     r'\b\d+[\.,]?\d*\s*(kg|g|mg|l|ml|cl|oz|lb|pack|can|bottle|bunch|ea|pc|tbl|tsp)\b',
@@ -75,4 +75,5 @@ def normalize(text: str) -> str:
             lemmatized_tokens.append(LEMMATIZER.lemmatize(t))
 
     final_tokens = sorted(list(set(lemmatized_tokens)))
+
     return " ".join(final_tokens)
