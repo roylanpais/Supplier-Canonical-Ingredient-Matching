@@ -22,12 +22,12 @@ async def lifespan(app: FastAPI):
     try:
         nltk.data.find('corpora/stopwords')
         nltk.data.find('corpora/wordnet')
-        nltk.data.find('tokenizers/punkt')
+        nltk.data.find('tokenizers/punkt_tab')
     except LookupError:
         print("Downloading NLTK data...")
         nltk.download('stopwords')
         nltk.download('wordnet')
-        nltk.download('punkt')
+        nltk.download('punkt_tab')
     
     try:
         master_data = pd.read_csv(MASTER_FILE)
@@ -97,4 +97,5 @@ def match_item(
         raise HTTPException(
             status_code=500,
             detail=f"An error occurred during matching: {e}"
+
         )
